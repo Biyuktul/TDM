@@ -33,7 +33,7 @@ const UserAdd = (props) => {
     console.log('Form Data: ', values);
 
     try {
-        const response = await fetch('weatherforecast', {
+      const response = await fetch('https://localhost:7087/api/Users/adduser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

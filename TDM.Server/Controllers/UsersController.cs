@@ -8,6 +8,7 @@ using TDM.Server.Model;
 namespace TDM.Server.Controllers
 {
     [Route("api/[controller]")]
+    [Route("~/api/User/allusers")]
     [ApiController]
     public class UsersController : Controller
     {

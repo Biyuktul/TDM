@@ -256,3 +256,4 @@ C:\Users\yonatan.addis\source\repos\TDM\TDM.Server\bin\Debug\net8.0\runtimes\win
 C:\Users\yonatan.addis\source\repos\TDM\TDM.Server\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\yonatan.addis\source\repos\TDM\TDM.Server\obj\Debug\net8.0\TDM.Server.RazorAssemblyInfo.cache
 C:\Users\yonatan.addis\source\repos\TDM\TDM.Server\obj\Debug\net8.0\TDM.Server.RazorAssemblyInfo.cs
+C:\Users\yonatan.addis\source\repos\TDM\TDM.Server\obj\Debug\net8.0\TDM.Server.sourcelink.json
