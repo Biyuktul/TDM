@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TDM.Server.props" />
+</Project>

@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "+QEOBZ35pWH/fc1t2R47IDY1dOufugMrSSP5a6+luB0=",
+  "Source": "TDM.Server",
+  "BasePath": "_content/TDM.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\yonatan.addis\\source\\repos\\TDM\\tdm.client\\tdm.client.esproj",
+      "Version": 2,
+      "Source": "tdm.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
