@@ -90,7 +90,7 @@ const UserList2 = () => {
   };
   
   const save = async (key) => {
-    //send put request to the server
+    
     try {
       const row = await form.validateFields();
       const newData = [...data];
@@ -102,7 +102,20 @@ const UserList2 = () => {
           ...row,
         });
         setData(newData);
-        setEditingKey('');
+          setEditingKey('');
+          console.log("new data: ", newData);
+        const response = await fetch(`https://localhost:7087/api/Users/updateuser/${key}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ...item, ...row }),
+           
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update data on the server');
+        }
       } else {
         newData.push(row);
         setData(newData);
@@ -113,25 +126,30 @@ const UserList2 = () => {
     }
   };
 
-  const handleDelete = (key) => {
-    //send a delete request to the server to delete
-    const newData = data.filter((item) => item.key !== key);
-    setData(newData);
-  };
-  
-  const handleAdd = () => {
-    // fetch data from the form and set the state variable
-    const newData = {
-        key: '4',
-        name: 'Leul Kas',
-        phone: '0944332277',
-        address: 'leul.kahsaye@berhanbanksc.com',
-        branch: 'Head Office',
-        department: 'Service Desk',
+  const handleDelete = async (id) => {
+        console.log("Deleting item with ID:", id);
+        try {
+            const response = await fetch(`https://localhost:7087/api/Users/deleteuser/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user: { id }
+                }),
+            });
+
+            if (response.ok) {
+                setData(data.filter((item) => item.key !== id));
+            } else {
+                console.error('Failed to delete item:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
     };
-    setData([...data, newData]);
-    setCount(count + 1);
-  };
+
+
 
   const columns = [
   {
@@ -170,7 +188,7 @@ const UserList2 = () => {
     width: '5%',
     render: (_, record) =>
         data.length >= 1 ? (
-        <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
             <a>Delete</a>
         </Popconfirm>
         ) : null,
@@ -178,7 +196,7 @@ const UserList2 = () => {
   {
     title: 'operation',
     dataIndex: 'operation',
-    width: '5%',
+    width: '10%',
     render: (_, record) => {
     const editable = isEditing(record);
     return editable ? (

@@ -8,7 +8,6 @@ using TDM.Server.Model;
 namespace TDM.Server.Controllers
 {
     [Route("api/[controller]")]
-    [Route("~/api/User/allusers")]
     [ApiController]
     public class UsersController : Controller
     {
@@ -42,6 +41,48 @@ namespace TDM.Server.Controllers
             await _context.SaveChangesAsync();
             return result;
         }
+
+        [HttpPut("updateuser/{id}")]
+        public async Task<ActionResult<User>> Put(int id, [FromBody] User user)
+        {
+            var theuser = await _context.User.FindAsync(id);
+
+            if (theuser == null)
+            {
+                return NotFound($"user not found with id={id}");
+            }
+
+            theuser.FullName = user.FullName;
+            theuser.PhoneNumber = user.PhoneNumber;
+            theuser.Email = user.Email;
+            theuser.Branch = user.Branch;
+            theuser.Department = user.Department;
+
+            _context.User.Update(theuser);
+            await _context.SaveChangesAsync();
+
+            return theuser;
+        }
+
+        
+
+        [HttpDelete("deleteuser/{id}")]
+        public async Task<ActionResult<User>> Delete(int id, [FromBody] User user)
+        {
+            var theuser = await _context.User.FindAsync(id);
+
+            if (theuser == null)
+            {
+                return NotFound($"user not found with id={id}");
+            }
+
+
+            _context.User.Remove(theuser);
+            await _context.SaveChangesAsync();
+
+            return theuser;
+        }
+
     }
 }
 
